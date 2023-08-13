@@ -43,6 +43,8 @@ class Maze:
         Method that draws the cells on the Maze.
     __animate(self)
         Allows to visualize what algorithms are doing in real time.
+    __break_entrance_and_exit(self)
+        Breaks wall on entrance and exit of maze.
     get_cells(self)
         Returns __cells attribute.
     """
@@ -77,6 +79,7 @@ class Maze:
         self.__win = win
 
         self.__create_cells()
+        self.__break_entrance_and_exit()
 
     def __create_cells(self):
         """Creates the cells of the maze in a 2-dimensional grid."""
@@ -117,6 +120,13 @@ class Maze:
 
         self.__win.redraw()
         time.sleep(0.05)
+
+    def __break_entrance_and_exit(self):
+        """Breaks wall on entrance and exit of maze."""
+        self.__cells[0][0].has_top_wall = False
+        self.__draw_cell(0, 0)
+        self.__cells[self.__num_cols - 1][self.__num_rows - 1].has_bottom_wall = False
+        self.__draw_cell(self.__num_cols - 1, self.__num_rows - 1)
 
     def get_cells(self):
         """Returns __cells attribute."""

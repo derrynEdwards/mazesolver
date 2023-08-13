@@ -159,4 +159,4 @@ class Line:
             fill=fill_color,
             width=2
         )
-        canvas.pack()
+        canvas.pack(fill=BOTH, expand=1)

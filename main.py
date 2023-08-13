@@ -10,7 +10,6 @@
 # IMPORTS
 # ==================================================================================================
 from graphics import Window
-from cell import Cell
 from maze import Maze
 
 
