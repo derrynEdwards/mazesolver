@@ -38,8 +38,13 @@ class Maze:
     Methods
     -------
     __create_cells(self)
+        Creates the cells of the maze in a 2-dimensional grid.
     __draw_cell(self, i, j)
+        Method that draws the cells on the Maze.
     __animate(self)
+        Allows to visualize what algorithms are doing in real time.
+    get_cells(self)
+        Returns __cells attribute.
     """
 
     def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None):
@@ -112,3 +117,7 @@ class Maze:
 
         self.__win.redraw()
         time.sleep(0.05)
+
+    def get_cells(self):
+        """Returns __cells attribute."""
+        return self.__cells
