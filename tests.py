@@ -1,0 +1,32 @@
+# ~*~ coding: utf-8 ~*~
+"""
+    File name           : tests.py
+    Author              : Derryn Edwards
+    Date Created        : 2023/08/12
+    Date Last Modified  : 2023/08/12
+    Python Version      : 3.11
+"""
+# ==================================================================================================
+# IMPORTS
+# ==================================================================================================
+import unittest
+from maze import Maze
+
+
+class Tests(unittest.TestCase):
+    def test_maze_create_cells(self):
+        num_cols = 12
+        num_rows = 10
+        m1 = Maze(0, 0, num_rows, num_cols, 10, 10)
+        self.assertEqual(
+            len(m1.__cells),
+            num_cols,
+        )
+        self.assertEqual(
+            len(m1.__cells[0]),
+            num_rows,
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
