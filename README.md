@@ -1,6 +1,16 @@
 Maze Solver
 ===========
-Maze Solver guided project from [Boot.dev](https://boot.dev).
+Maze Solver guided project from [Boot.dev](https://boot.dev).  
+
+The algorithm used for breaking the walls (creating the maze) is __Breadth First Search__ `BFS`.  
+`Maze.__break_walls_r`  
+
+![BFS](./screenshots/maxresdefault.jpg)  
+
+The algorithm used for solving the maze is __Depth First Search__ `DFS`.  
+`MAze.__solve_r`  
+
+![DFS](./screenshots/depth-first-search.png)
 
 Objective
 ---------
