@@ -37,6 +37,7 @@ class Cell:
     __y2 : int
         y coordinate for Point 2
     __win : Window Object
+        Default: None
         Instance of Window class for drawing.
 
     Methods
@@ -47,11 +48,12 @@ class Cell:
         Draws a line between the center of 2 cells as a Path.
     """
 
-    def __init__(self, window):
+    def __init__(self, window=None):
         """
         Parameters
         ----------
         window : Window Object
+            Default: None
             Instance of Window class for drawing.
         """
         self.has_left_wall = True

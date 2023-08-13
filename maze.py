@@ -32,6 +32,7 @@ class Maze:
     __cell_size_y : float
         Height of each cell.
     __win : Window object
+        Default: None
         Instance of Window class.
 
     Methods
@@ -41,7 +42,7 @@ class Maze:
     __animate(self)
     """
 
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win):
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None):
         """
         Parameters
         ----------
@@ -58,6 +59,7 @@ class Maze:
         cell_size_y : float
             Height of each cell.
         win : Window object
+            Default: None
             Instance of Window class.
         """
         self.__cells = []
