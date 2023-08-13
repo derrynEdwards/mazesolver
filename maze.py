@@ -50,6 +50,10 @@ class Maze:
         Recursive method that breaks walls in a breadth-first traversal.
     __reset_cells_visited(self)
         Resets all cells visited attribute to False.
+    __solve_r(self, i, j)
+        Recursive method that attempts to solve the maze.
+    solve(self)
+        Calls __solve_r method. Returns True if successful, otherwise False.
     get_cells(self)
         Returns __cells attribute.
     """
@@ -201,6 +205,72 @@ class Maze:
         for col in self.__cells:
             for cell in col:
                 cell.visited = False
+
+    def __solve_r(self, i, j):
+        """Recursive method that attempts to solve the maze."""
+        self.__animate()
+
+        # visit current cell
+        self.__cells[i][j].visited = True
+
+        # if at end cell, maze is solved!
+        if i == self.__num_cols - 1 and j == self.__num_rows - 1:
+            return True
+
+        # move left if no wall and not visited
+        if (
+                i > 0
+                and not self.__cells[i][j].has_left_wall
+                and not self.__cells[i - 1][j].visited
+        ):
+            self.__cells[i][j].draw_move(self.__cells[i - 1][j])
+            if self.__solve_r(i - 1, j):
+                return True
+            else:
+                self.__cells[i][j].draw_move(self.__cells[i - 1][j], True)
+
+        # move right if no wall and not visited
+        if (
+                i < self.__num_cols - 1
+                and not self.__cells[i][j].has_right_wall
+                and not self.__cells[i + 1][j].visited
+        ):
+            self.__cells[i][j].draw_move(self.__cells[i + 1][j])
+            if self.__solve_r(i + 1, j):
+                return True
+            else:
+                self.__cells[i][j].draw_move(self.__cells[i + 1][j], True)
+
+        # move up if no wall and not visited
+        if (
+                j > 0
+                and not self.__cells[i][j].has_top_wall
+                and not self.__cells[i][j - 1].visited
+        ):
+            self.__cells[i][j].draw_move(self.__cells[i][j - 1])
+            if self.__solve_r(i, j - 1):
+                return True
+            else:
+                self.__cells[i][j].draw_move(self.__cells[i][j - 1], True)
+
+        # move down if no wall and not visited
+        if (
+                j < self.__num_rows - 1
+                and not self.__cells[i][j].has_bottom_wall
+                and not self.__cells[i][j + 1].visited
+        ):
+            self.__cells[i][j].draw_move(self.__cells[i][j + 1])
+            if self.__solve_r(i, j + 1):
+                return True
+            else:
+                self.__cells[i][j].draw_move(self.__cells[i][j + 1], True)
+
+        # went wrong way; return False
+        return False
+
+    def solve(self):
+        """Calls __solve_r method. Returns True if successful, otherwise False."""
+        return self.__solve_r(0, 0)
 
     def get_cells(self):
         """Returns __cells attribute."""
