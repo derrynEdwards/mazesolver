@@ -125,7 +125,7 @@ class Cell:
         fill_color = "red"
 
         if undo:
-            fill_color = "gray"
+            fill_color = "blue"
 
         # moving left
         if self.__x1 > to_cell.__x1:
